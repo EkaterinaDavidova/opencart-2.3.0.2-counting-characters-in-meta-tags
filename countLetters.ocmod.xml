@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>CountLetters</name>
+     <code>CountLetters</code>
+    <version>1.0</version>
+    <author>DK</author>
+    <file path="admin/view/template/catalog/product_form.tpl">
+
+         <operation>
+            <search><![CDATA[
+            input-meta-title<?php echo $language['language_id']; ?>" class="form-control" />
+            ]]></search>
+            <add position="replace"><![CDATA[
+            input-meta-title<?php echo $language['language_id']; ?>" class="form-control countLetter" />
+            <div class="resultCountLetter">
+            </div>
+            <script>
+                $(".resultCountLetter").html($(".countLetter").val().length);
+                $(".countLetter").on('change', function(){
+                    $(".resultCountLetter").html($(".countLetter").val().length);
+                });
+            </script>
+
+            ]]></add>
+        </operation>
+
+        <operation>
+            <search index="0"><![CDATA[
+            language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id'
+            ]]></search>
+            <add position="replace"><![CDATA[
+            language_id']; ?>" class="form-control countLetterD"><?php echo isset($product_description[$language['language_id'
+            
+            ]]></add>
+        </operation>
+
+        <operation>
+            <search><![CDATA[
+            ]]) ? $product_description[$language['language_id']]['meta_description'] : ''; ?></textarea>
+            ]]></search>
+            <add position="after"><![CDATA[
+            <div class="resultCountLetterD">
+            </div>
+            <script>
+                $(".resultCountLetterD").html($(".countLetterD").val().length);
+                $(".countLetterD").on('change', function(){
+                    $(".resultCountLetterD").html($(".countLetterD").val().length);
+                });
+            </script>
+            
+            ]]></add>
+        </operation>
+        
+    </file>
+</modification>
